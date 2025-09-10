@@ -10,14 +10,17 @@ import datetime
 import tempfile
 
 # ------------------ FIREBASE SETUP ------------------
-if "firebase" in st.secrets:  # safer (Streamlit Cloud secrets)
-    cred = credentials.Certificate(dict(st.secrets["firebase"]))
-else:  # fallback (local JSON file, not for deployment)
+try:
+    # Use secrets (Streamlit Cloud)
+    firebase_config = dict(st.secrets["firebase"])
+    cred = credentials.Certificate(firebase_config)
+except Exception as e:
+    # Fallback: local testing with firebase_key.json
     cred = credentials.Certificate("firebase_key.json")
 
 if not firebase_admin._apps:
     firebase_admin.initialize_app(cred, {
-        "databaseURL": "https://console.firebase.google.com/u/0/project/smart-attendance-system-45296/database/smart-attendance-system-45296-default-rtdb/data/~2F/"
+        "databaseURL": "https://your-project-id-default-rtdb.firebaseio.com/"
     })
 
 # Firebase references
@@ -183,4 +186,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
