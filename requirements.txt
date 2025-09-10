@@ -1,0 +1,7 @@
+streamlit
+insightface
+onnxruntime
+opencv-python-headless
+numpy
+pandas
+firebase-admin
