@@ -17,7 +17,7 @@ else:  # fallback (local JSON file, not for deployment)
 
 if not firebase_admin._apps:
     firebase_admin.initialize_app(cred, {
-        "databaseURL": "https://YOUR_PROJECT_ID.firebaseio.com/"
+        "databaseURL": "https://console.firebase.google.com/u/0/project/smart-attendance-system-45296/database/smart-attendance-system-45296-default-rtdb/data/~2F/"
     })
 
 # Firebase references
@@ -183,3 +183,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
